@@ -31,7 +31,7 @@ vim.opt.splitbelow = true       -- bool: Place new window below the current one
 
 -- Timings
 vim.opt.updatetime = 250        -- int: Milliseconds after which swap file will be written
-vim.opt.timeoutlen = 300        -- int: Milliseconds to wait for mapped sequence to complete
+vim.opt.timeoutlen = 400        -- int: Milliseconds to wait for mapped sequence to complete
 
 -- Other
 vim.opt.undofile = true         -- bool: Whether to save undo history
