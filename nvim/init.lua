@@ -1,6 +1,6 @@
 -- Set leader key
-vim.g.mapleader = " "
-vim.g.localleader = " "
+vim.g.mapleader = ";"
+vim.g.localleader = ";"
 
 
 -- Imports
