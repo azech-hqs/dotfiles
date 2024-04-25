@@ -1,5 +1,5 @@
 -- Context
-vim.opt.colorcolumn = "90"      -- str: Show col for max line length
+vim.opt.colorcolumn = "99"      -- str: Show col for max line length
 vim.opt.number = true           -- bool: Show line numbers
 vim.opt.relativenumber = true   -- bool: Show relative line numbers
 vim.opt.cursorline = true       -- bool: Highlight cursor line
