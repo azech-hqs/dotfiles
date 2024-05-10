@@ -2,6 +2,9 @@ return {
     -- "gc" to comment visual regions/lines
     { "numToStr/Comment.nvim", opts = {} },
 
+    -- Add/delete/replace surroundings (brackets, quotes, etc.)
+    { "echasnovski/mini.surround", version = "*", opts = {} },
+
     -- Snippets
     {
         "L3MON4D3/LuaSnip",
