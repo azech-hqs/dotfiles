@@ -41,4 +41,12 @@ return {
         },
     },
 
+    { -- Linting
+        "mfussenegger/nvim-lint",
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            require("plugins.configs.nvim_lint")
+        end,
+    },
+
 }
