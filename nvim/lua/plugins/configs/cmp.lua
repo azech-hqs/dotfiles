@@ -19,6 +19,13 @@ cmp.setup({
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete({}),
+        ["<C-y>"] = cmp.mapping(
+            cmp.mapping.confirm({
+                behavior = cmp.ConfirmBehavior.Insert,
+                select = true,
+            }),
+            { "i", "c" }
+        ),
         ["<CR>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
         }),
