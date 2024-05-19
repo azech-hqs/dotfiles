@@ -74,20 +74,29 @@ require("neodev").setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
--- Ensure the servers above are installed
-local mason_lspconfig = require("mason-lspconfig")
+-- Ensure language servers and tools are installed via Mason
+require("mason").setup()
 
-mason_lspconfig.setup {
-    ensure_installed = vim.tbl_keys(servers),
-}
+-- You can add other tools here that you want Mason to install
+-- for you, so that they are available from within Neovim.
+local ensure_installed = vim.tbl_keys(servers or {})
+vim.list_extend(ensure_installed, {
+    "ruff",
+    "isort",
+    "black",
+    "stylua", -- Used to format Lua code
+})
+require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 
-mason_lspconfig.setup_handlers {
-    function(server_name)
-        require("lspconfig")[server_name].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes,
-        })
-    end
+require('mason-lspconfig').setup {
+    handlers = {
+        function(server_name)
+            local server = servers[server_name] or {}
+            -- This handles overriding only values explicitly passed
+            -- by the server configuration above. Useful when disabling
+            -- certain features of an LSP (for example, turning off formatting for tsserver)
+            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            require('lspconfig')[server_name].setup(server)
+        end,
+    },
 }
