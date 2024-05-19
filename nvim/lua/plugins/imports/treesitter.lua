@@ -10,5 +10,5 @@ return {
         config = function()
             require("plugins.configs.treesitter")
         end,
-    }
+    },
 }

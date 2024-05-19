@@ -1,3 +1,4 @@
+-- stylua: ignore start
 -- Context
 vim.opt.colorcolumn = "99"      -- str: Show col for max line length
 vim.opt.number = true           -- bool: Show line numbers
@@ -41,3 +42,4 @@ vim.opt.undofile = true         -- bool: Whether to save undo history
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.opt.clipboard = 'unnamedplus'
+-- stylua: ignore end

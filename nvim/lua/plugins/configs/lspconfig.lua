@@ -23,7 +23,11 @@ local on_attach = function(_, bufnr)
     nmap("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
     nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
     nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-    nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+    nmap(
+        "<leader>ws",
+        require("telescope.builtin").lsp_dynamic_workspace_symbols,
+        "[W]orkspace [S]ymbols"
+    )
 
     -- See `:help K` for why this keymap
     nmap("K", vim.lsp.buf.hover, "Hover Documentation")
@@ -86,17 +90,18 @@ vim.list_extend(ensure_installed, {
     "black",
     "stylua", -- Used to format Lua code
 })
-require("mason-tool-installer").setup { ensure_installed = ensure_installed }
+require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-require('mason-lspconfig').setup {
+require("mason-lspconfig").setup({
     handlers = {
         function(server_name)
             local server = servers[server_name] or {}
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+            server.capabilities =
+                vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+            require("lspconfig")[server_name].setup(server)
         end,
     },
-}
+})

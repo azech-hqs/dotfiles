@@ -14,7 +14,7 @@ require("nvim-treesitter.configs").setup({
         "typescript",
         "vimdoc",
         "vim",
-        "vue"
+        "vue",
     },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
@@ -24,7 +24,7 @@ require("nvim-treesitter.configs").setup({
     sync_install = false,
 
     -- List of parsers to ignore installing (or "all")
-    ignore_install = { },
+    ignore_install = {},
 
     highlight = { enable = true },
     indent = { enable = true },
@@ -86,7 +86,12 @@ require("nvim-treesitter.configs").setup({
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+vim.keymap.set(
+    "n",
+    "<leader>e",
+    vim.diagnostic.open_float,
+    { desc = "Open floating diagnostic message" }
+)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 -- Treesitter-context
@@ -97,7 +102,7 @@ require("treesitter-context").setup({
     line_numbers = true,
     multiline_threshold = 20, -- Maximum number of lines to show for a single context
     trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-    mode = "cursor",  -- Line used to calculate context. Choices: 'cursor', 'topline'
+    mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
     -- Separator between context and content. Should be a single character string, like '-'.
     -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
     separator = nil,

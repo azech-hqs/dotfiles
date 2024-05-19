@@ -1,18 +1,20 @@
-require("gitsigns").setup {
+require("gitsigns").setup({
     signs = {
-        add          = { text = "┃" },
-        change       = { text = "┃" },
-        delete       = { text = "_" },
-        topdelete    = { text = "‾" },
+        add = { text = "┃" },
+        change = { text = "┃" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
         changedelete = { text = "~" },
-        untracked    = { text = "┆" },
+        untracked = { text = "┆" },
     },
+    -- stylua: ignore start
     signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
     numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
     linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
     word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+    -- stylua: ignore end
     watch_gitdir = {
-        follow_files = true
+        follow_files = true,
     },
     auto_attach = true,
     attach_to_untracked = false,
@@ -38,7 +40,7 @@ require("gitsigns").setup {
         style = "minimal",
         relative = "cursor",
         row = 0,
-        col = 1
+        col = 1,
     },
     on_attach = function(bufnr)
         local gitsigns = require("gitsigns")
@@ -52,7 +54,7 @@ require("gitsigns").setup {
         -- Navigation
         map("n", "]c", function()
             if vim.wo.diff then
-                vim.cmd.normal({"]c", bang = true})
+                vim.cmd.normal({ "]c", bang = true })
             else
                 gitsigns.nav_hunk("next")
             end
@@ -60,7 +62,7 @@ require("gitsigns").setup {
 
         map("n", "[c", function()
             if vim.wo.diff then
-                vim.cmd.normal({"[c", bang = true})
+                vim.cmd.normal({ "[c", bang = true })
             else
                 gitsigns.nav_hunk("prev")
             end
@@ -69,10 +71,10 @@ require("gitsigns").setup {
         -- Actions
         -- visual mode
         map("v", "<leader>hs", function()
-            gitsigns.stage_hunk {vim.fn.line("."), vim.fn.line("v")}
+            gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
         end, { desc = "stage git hunk" })
         map("v", "<leader>hr", function()
-            gitsigns.reset_hunk {vim.fn.line("."), vim.fn.line("v")}
+            gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
         end, { desc = "reset git hunk" })
         -- normal mode
         map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "git [s]tage hunk" })
@@ -82,7 +84,7 @@ require("gitsigns").setup {
         map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "git [R]eset buffer" })
         map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "git [p]review hunk" })
         map("n", "<leader>hb", function()
-            gitsigns.blame_line{full=true}
+            gitsigns.blame_line({ full = true })
         end, { desc = "git [b]lame line" })
         map("n", "<leader>hd", gitsigns.diffthis, { desc = "git [d]iff against index" })
         map("n", "<leader>hD", function()
@@ -90,12 +92,15 @@ require("gitsigns").setup {
         end, { desc = "git [D]iff against last commit" })
 
         -- toggles
-        map("n", "<leader>tb", gitsigns.toggle_current_line_blame,
-            { desc = "[T]oggle git show [b]lame line" })
-        map("n", "<leader>td", gitsigns.toggle_deleted,
-            { desc = "[T]oggle git show [D]eleted" })
+        map(
+            "n",
+            "<leader>tb",
+            gitsigns.toggle_current_line_blame,
+            { desc = "[T]oggle git show [b]lame line" }
+        )
+        map("n", "<leader>td", gitsigns.toggle_deleted, { desc = "[T]oggle git show [D]eleted" })
 
         -- Text object
-        map({"o", "x"}, "ih", ":<C-U>Gitsigns select_hunk<CR>")
-    end
-}
+        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+    end,
+})

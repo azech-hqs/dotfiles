@@ -14,7 +14,7 @@ return {
                 --       refer to the README for telescope-fzf-native for more instructions.
                 build = "make",
                 cond = function()
-                    return vim.fn.executable "make" == 1
+                    return vim.fn.executable("make") == 1
                 end,
             },
         },
@@ -25,14 +25,14 @@ return {
 
     -- Set lualine as statusline
     {
-        'nvim-lualine/lualine.nvim',
+        "nvim-lualine/lualine.nvim",
         -- See `:help lualine.txt`
         opts = {
             options = {
                 icons_enabled = false,
-                theme = 'onedark',
-                component_separators = '|',
-                section_separators = '',
+                theme = "onedark",
+                component_separators = "|",
+                section_separators = "",
             },
         },
     },
