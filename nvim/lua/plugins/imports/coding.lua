@@ -49,4 +49,11 @@ return {
         end,
     },
 
+    { -- Autoformat
+        "stevearc/conform.nvim",
+        lazy = false,
+        config = function()
+            require("plugins.configs.conform")
+        end,
+    },
 }
