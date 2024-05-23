@@ -87,6 +87,8 @@ vim.list_extend(ensure_installed, {
     "isort",
     "black",
     "stylua", -- Used to format Lua code
+    "prettier",
+    "eslint_d",
 })
 require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
