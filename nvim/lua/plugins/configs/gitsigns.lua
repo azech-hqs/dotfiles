@@ -8,7 +8,7 @@ require("gitsigns").setup({
         untracked = { text = "┆" },
     },
     -- stylua: ignore start
-    signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+    signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
     numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
     linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
     word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
@@ -58,7 +58,7 @@ require("gitsigns").setup({
             else
                 gitsigns.nav_hunk("next")
             end
-        end)
+        end, { desc = "Next hunk" })
 
         map("n", "[c", function()
             if vim.wo.diff then
@@ -66,7 +66,7 @@ require("gitsigns").setup({
             else
                 gitsigns.nav_hunk("prev")
             end
-        end)
+        end, { desc = "Previos hunk" })
 
         -- Actions
         -- visual mode
