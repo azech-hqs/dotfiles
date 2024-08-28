@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         -- See `:help K` for why this keymap
         map("K", vim.lsp.buf.hover, "Hover Documentation")
-        map("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+        map("<leader>k", vim.lsp.buf.signature_help, "Signature Documentation")
 
         -- Lesser used LSP functionality
         map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
