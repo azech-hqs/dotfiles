@@ -22,3 +22,14 @@ vim.keymap.set("n", "<M-t>", "<c-w>5<", { desc = "Decrease split width for curre
 vim.keymap.set("n", "<M-s>", "<c-w>5>", { desc = "Increase split width for current buffer" })
 vim.keymap.set("n", "<M-g>", "<C-W>+", { desc = "Increase split height for current buffer" })
 vim.keymap.set("n", "<M-h>", "<C-W>->", { desc = "Decrease split height for current buffer" })
+
+-- Copy to clipboard
+vim.keymap.set("v", "<leader>y", '"+y', { desc = "Copy to clipboard" })
+vim.keymap.set("n", "<leader>y", '"+y', { desc = "Copy to clipboard (combine with vimotions)" })
+vim.keymap.set("n", "<leader>Y", '"+yg_', { desc = "Copy until end of line to clipboard" })
+vim.keymap.set("n", "<leader>yy", '"+yy', { desc = "Copy line to clipboard" })
+
+-- Paste from clipboard
+vim.keymap.set("v", "<leader>p", '"+p', { desc = "Paste from clipboard" })
+vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from clipboard" })
+vim.keymap.set("n", "<leader>P", '"+P', { desc = "Paste from clipboard (on-cursor)" })
