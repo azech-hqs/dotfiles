@@ -5,7 +5,6 @@ vim.opt.number = true           -- bool: Show line numbers
 vim.opt.relativenumber = true   -- bool: Show relative line numbers
 vim.opt.cursorline = true       -- bool: Highlight cursor line
 vim.opt.scrolloff = 4           -- int: Min num lines of context
-vim.opt.signcolumn = "yes:2"      -- str: Show the sign column
 
 -- Filetypes
 vim.opt.encoding = "utf8"       -- str: String encoding
