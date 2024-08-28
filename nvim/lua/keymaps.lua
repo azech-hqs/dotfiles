@@ -18,7 +18,7 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Resize splits
-vim.keymap.set("n", "<M-t>", "<c-w>5<", { desc = "Move split to the left" })
-vim.keymap.set("n", "<M-s>", "<c-w>5>", { desc = "Move split to the right" })
-vim.keymap.set("n", "<M-g>", "<C-W>+", { desc = "Move split upwards" })
-vim.keymap.set("n", "<M-h>", "<C-W>->", { desc = "Move split downwards" })
+vim.keymap.set("n", "<M-t>", "<c-w>5<", { desc = "Decrease split width for current buffer" })
+vim.keymap.set("n", "<M-s>", "<c-w>5>", { desc = "Increase split width for current buffer" })
+vim.keymap.set("n", "<M-g>", "<C-W>+", { desc = "Increase split height for current buffer" })
+vim.keymap.set("n", "<M-h>", "<C-W>->", { desc = "Decrease split height for current buffer" })
