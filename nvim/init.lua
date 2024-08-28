@@ -5,6 +5,7 @@ vim.g.localleader = ","
 -- Imports
 require("opts")
 require("keymaps")
+require("ui")
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
