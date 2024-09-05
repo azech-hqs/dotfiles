@@ -32,3 +32,9 @@ vim.keymap.set("n", "<leader>Y", '"+yg_', { desc = "Copy until end of line to cl
 vim.keymap.set("v", "<leader>p", '"+p', { desc = "Paste from clipboard" })
 vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from clipboard" })
 vim.keymap.set("n", "<leader>P", '"+P', { desc = "Paste from clipboard (on-cursor)" })
+
+-- Select string without leading whitespace for va" or va'
+vim.keymap.set("o", "a'", "2i'", { noremap = true })
+vim.keymap.set("o", 'a"', '2i"', { noremap = true })
+vim.keymap.set("x", "a'", "2i'", { noremap = true })
+vim.keymap.set("x", 'a"', '2i"', { noremap = true })
