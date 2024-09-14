@@ -44,4 +44,7 @@ return {
             require("plugins.configs.statuscol")
         end,
     },
+
+    -- Kitty syntax highlighting
+    { "fladson/vim-kitty" },
 }
