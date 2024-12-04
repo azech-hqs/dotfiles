@@ -42,6 +42,13 @@ filename = "{{format-date now '%Y-%m-%d'}}"
 extension = "md"
 template = "daily.md"
 
+[group.productmeeting]
+paths = ["meetings/productmeeting"]
+
+[group.productmeeting.note]
+template = "productmeeting.md"
+
+
 # MARKDOWN SETTINGS
 [format.markdown]
 # Enable support for #hashtags
@@ -81,8 +88,9 @@ recent = "zk edit --sort created- --created-after 'last two weeks' --interactive
 # Show a random note.
 lucky = "zk list --quiet --format full --sort random --limit 1"
 
-# Create a new note for the daily meeting.
+# Create a new note for meetings.
 daily = 'zk new --no-input "$ZK_NOTEBOOK_DIR/meetings/daily"'
+pm = 'zk new "$ZK_NOTEBOOK_DIR/meetings/productmeeting" "$@"'
 
 # LSP (EDITOR INTEGRATION)
 [lsp]
