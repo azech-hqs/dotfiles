@@ -27,4 +27,13 @@ cmp.setup({
 
     -- experimental signature help support
     signature = { enabled = true },
+
+    completion = {
+        menu = {
+            auto_show = function(ctx)
+                return ctx.mode ~= "cmdline"
+                    or not vim.tbl_contains({ "/", "?" }, vim.fn.getcmdtype())
+            end,
+        },
+    },
 })
