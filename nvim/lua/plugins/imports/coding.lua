@@ -17,15 +17,14 @@ return {
 
     -- Autocompletion
     {
-        "hrsh7th/nvim-cmp",
-        version = false,
-        event = "InsertEnter",
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "saadparwaiz1/cmp_luasnip",
-        },
+        "saghen/blink.cmp",
+        -- use a release tag to download pre-built binaries
+        version = "v0.*",
+        lazy = false, -- lazy loading handled internally
+        dependencies = "rafamadriz/friendly-snippets",
+        -- allows extending the providers array elsewhere in your config
+        -- without having to redefine it
+        opts_extend = { "sources.default" },
         config = function()
             require("plugins.configs.cmp")
         end,
