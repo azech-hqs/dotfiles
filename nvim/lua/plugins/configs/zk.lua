@@ -1,3 +1,3 @@
 require("zk").setup({
-    picker = "fzf",
+    picker = "telescope",
 })
