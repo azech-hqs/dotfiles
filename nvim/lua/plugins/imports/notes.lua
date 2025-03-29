@@ -4,6 +4,16 @@ return {
         "zk-org/zk-nvim",
         config = function()
             require("plugins.configs.zk")
-        end
+        end,
+    },
+
+    -- Markdown rendering
+    {
+        "MeanderingProgrammer/render-markdown.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" }, -- if you use standalone mini plugins
+        ---@module 'render-markdown'
+        config = function()
+            require("plugins.configs.render-markdown")
+        end,
     },
 }
