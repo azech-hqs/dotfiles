@@ -6,6 +6,7 @@ return {
             require("plugins.configs.which_key")
         end,
     },
+    -- QoL improvements
     {
         "folke/snacks.nvim",
         priority = 1000,
