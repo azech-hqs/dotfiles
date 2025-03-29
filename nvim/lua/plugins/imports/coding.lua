@@ -30,16 +30,6 @@ return {
         end,
     },
 
-    -- Add indentation guides even on blank lines
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        -- See `:help indent_blankline.txt`
-        opts = {
-            indent = { char = "┊" },
-        },
-    },
-
     { -- Linting
         "mfussenegger/nvim-lint",
         event = { "BufReadPre", "BufNewFile" },
