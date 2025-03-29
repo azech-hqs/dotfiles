@@ -1,3 +1,4 @@
+-- Deactivated for now
 local builtin = require("statuscol.builtin")
 
 require("statuscol").setup({

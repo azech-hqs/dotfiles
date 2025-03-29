@@ -38,16 +38,16 @@ return {
     },
 
     -- Configurable status column
-    {
-        "luukvbaal/statuscol.nvim",
-        config = function()
-            require("plugins.configs.statuscol")
-        end,
-    },
+    -- {
+    --     "luukvbaal/statuscol.nvim",
+    --     config = function()
+    --         require("plugins.configs.statuscol")
+    --     end,
+    -- },
 
     -- Kitty syntax highlighting
     { "fladson/vim-kitty" },
 
     -- Ansible file detection and convenience functions
-    { "mfussenegger/nvim-ansible" }
+    { "mfussenegger/nvim-ansible" },
 }
