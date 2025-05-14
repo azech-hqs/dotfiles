@@ -38,3 +38,16 @@ vim.keymap.set("o", "a'", "2i'", { noremap = true })
 vim.keymap.set("o", 'a"', '2i"', { noremap = true })
 vim.keymap.set("x", "a'", "2i'", { noremap = true })
 vim.keymap.set("x", 'a"', '2i"', { noremap = true })
+
+-- Copy current buffer path to clipboard
+local function get_buf_path()
+    local name = vim.api.nvim_buf_get_name(0)
+    print(name)
+    vim.fn.setreg("+", name)
+end
+vim.keymap.set(
+    "n",
+    "<leader>bp",
+    get_buf_path,
+    { desc = "Copy current [b]uffer [p]ath to clipboard" }
+)
