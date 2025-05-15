@@ -55,7 +55,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 local servers = {
     -- clangd = {},
     gopls = {},
-    -- pyright = {},
+    pyright = {},
+    -- ruff = {},
     rust_analyzer = {},
     -- tsserver = {},
     -- html = { filetypes = { "html", "twig", "hbs"} },
@@ -88,7 +89,6 @@ local ensure_installed = vim.tbl_keys(servers or {})
 vim.list_extend(ensure_installed, {
     "ruff",
     "isort",
-    "black",
     "stylua", -- Used to format Lua code
     "prettier",
     "eslint_d",
