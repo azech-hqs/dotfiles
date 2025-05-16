@@ -3,7 +3,13 @@ return {
     { "numToStr/Comment.nvim", opts = {} },
 
     -- Add/delete/replace surroundings (brackets, quotes, etc.)
-    { "echasnovski/mini.surround", version = "*", opts = {} },
+    {
+        "echasnovski/mini.surround",
+        version = "*",
+        config = function()
+            require("plugins.configs.mini_surround")
+        end,
+    },
 
     -- Snippets
     {
