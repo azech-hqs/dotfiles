@@ -16,6 +16,7 @@ M.opts = {
     scroll = { enabled = true },
     statuscolumn = { enabled = true },
     terminal = {},
+    picker = {},
 }
 
 -- Keymaps
