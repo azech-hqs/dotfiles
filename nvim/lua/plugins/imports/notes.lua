@@ -1,3 +1,4 @@
+---@type LazyPluginSpec[]
 return {
     -- Zettelkasten note-taking
     {
