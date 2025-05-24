@@ -2,9 +2,7 @@ return {
     -- Show key bindings
     {
         "folke/which-key.nvim",
-        config = function()
-            require("plugins.configs.which_key")
-        end,
+        opts = require("plugins.configs.which_key"),
     },
     -- QoL improvements
     {
@@ -13,6 +11,6 @@ return {
         lazy = false,
         config = function()
             require("plugins.configs.snacks")
-        end
+        end,
     },
 }
