@@ -43,8 +43,7 @@ return {
     { -- Autoformat
         "stevearc/conform.nvim",
         lazy = false,
-        config = function()
-            require("plugins.configs.conform")
-        end,
+        opts = require("plugins.configs.conform").opts,
+        keys = require("plugins.configs.conform").keys,
     },
 }
