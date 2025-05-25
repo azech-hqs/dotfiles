@@ -12,14 +12,15 @@ return {
             "WhoIsSethDaniel/mason-tool-installer.nvim",
 
             -- Useful status updates for LSP
-            -- NOTE: `opts = {}` is the same as calling `require("fidget").setup({})`
             { "j-hui/fidget.nvim", tag = "legacy", opts = {} },
-
-            -- Additional lua configuration, makes nvim stuff amazing!
-            "folke/neodev.nvim",
         },
         config = function()
             require("plugins.configs.lspconfig")
         end,
+    },
+    { -- Configure LuaLS for editing nvim config files
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {},
     },
 }

@@ -55,9 +55,6 @@ local servers = {
     },
 }
 
--- Setup neovim lua configuration
-require("neodev").setup()
-
 -- LSP servers and clients communicate which features they support through "capabilities".
 --  By default, Neovim supports a subset of the LSP specification.
 --  With blink.cmp, Neovim has *more* capabilities which are communicated to the LSP servers.
