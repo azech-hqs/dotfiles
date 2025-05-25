@@ -18,6 +18,7 @@ M.opts = {
     terminal = {},
     picker = {},
     explorer = {},
+    lazygit = {},
 }
 
 -- Keymaps
@@ -92,6 +93,8 @@ M.keys = {
     { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "[G]oto T[y]pe Definition" },
     { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP [S]ymbols" },
     { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace [S]ymbols" },
+    -- snacks.lazygit
+    { "<leader>ul", function() Snacks.lazygit() end, desc = "[L]azygit"},
     --stylua: ignore end
 }
 
