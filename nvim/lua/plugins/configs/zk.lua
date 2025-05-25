@@ -1,5 +1,5 @@
 require("zk").setup({
-    picker = "telescope",
+    picker = "snacks_picker",
 })
 
 vim.keymap.set("n", "<leader>zn", function()
