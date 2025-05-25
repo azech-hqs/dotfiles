@@ -1,3 +1,4 @@
+---@type LazyPluginSpec[]
 return {
     -- "gc" to comment visual regions/lines
     { "numToStr/Comment.nvim", opts = {} },
@@ -24,16 +25,11 @@ return {
     -- Autocompletion
     {
         "saghen/blink.cmp",
-        -- use a release tag to download pre-built binaries
         version = "v1.*",
         lazy = false, -- lazy loading handled internally
-        dependencies = "rafamadriz/friendly-snippets",
-        -- allows extending the providers array elsewhere in your config
-        -- without having to redefine it
+        dependencies = { "rafamadriz/friendly-snippets" },
+        opts = require("plugins.configs.cmp"),
         opts_extend = { "sources.default" },
-        config = function()
-            require("plugins.configs.cmp")
-        end,
     },
 
     { -- Linting
@@ -47,8 +43,7 @@ return {
     { -- Autoformat
         "stevearc/conform.nvim",
         lazy = false,
-        config = function()
-            require("plugins.configs.conform")
-        end,
+        opts = require("plugins.configs.conform").opts,
+        keys = require("plugins.configs.conform").keys,
     },
 }
