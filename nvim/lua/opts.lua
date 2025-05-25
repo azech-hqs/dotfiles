@@ -43,3 +43,6 @@ vim.opt.undofile = true         -- bool: Whether to save undo history
 --  See `:help 'clipboard'`
 vim.opt.clipboard = 'unnamedplus'
 -- stylua: ignore end
+
+-- Diagnostic Settings
+vim.diagnostic.config({ jump = { float = true } })
