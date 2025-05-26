@@ -51,3 +51,13 @@ vim.keymap.set(
     get_buf_path,
     { desc = "Copy current [b]uffer [p]ath to clipboard" }
 )
+
+-- Search within selection
+-- Note: this overrides standard behavior (extending selection to next found item).
+vim.keymap.set("x", "/", "<C-\\><C-n>`</\\%V", { desc = "Search forward within visual selection" })
+vim.keymap.set(
+    "x",
+    "?",
+    "<C-\\><C-n>`>?\\%V",
+    { desc = "Search backward within visual selection" }
+)
