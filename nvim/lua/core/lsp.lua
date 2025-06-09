@@ -1,8 +1,9 @@
 vim.lsp.enable({
     -- locally defined
     "lua_ls",
-    -- from nvim-lspconfig
+    "ruff",
     "pyright",
+    -- from nvim-lspconfig
 })
 
 --  This function gets run when an LSP attaches to a particular buffer.
