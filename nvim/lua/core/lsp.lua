@@ -1,3 +1,10 @@
+vim.lsp.enable({
+    -- locally defined
+    "lua_ls",
+    -- from nvim-lspconfig
+    "pyright",
+})
+
 -- Diagnostic Config
 -- See :help vim.diagnostic.Opts
 vim.diagnostic.config({
