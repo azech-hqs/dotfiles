@@ -1,7 +1,8 @@
+-- Note: nvim-lint complements the built-in language server client for languages where there are no
+-- language servers, or where standalone linters provide better results.
 local lint = require("lint")
 
 lint.linters_by_ft = {
-    python = { "ruff" },
     javascript = { "eslint" },
     javascriptreact = { "eslint" },
     typescript = { "eslint" },
