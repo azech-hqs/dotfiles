@@ -11,7 +11,7 @@ return {
             "WhoIsSethDaniel/mason-tool-installer.nvim",
 
             -- Useful status updates for LSP
-            { "j-hui/fidget.nvim", tag = "legacy", opts = {} },
+            { "j-hui/fidget.nvim", version = "1.*", opts = {} },
         },
         config = function()
             require("plugins.configs.lspconfig")
