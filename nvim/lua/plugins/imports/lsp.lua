@@ -14,7 +14,7 @@ return {
             { "j-hui/fidget.nvim", version = "1.*", opts = {} },
         },
         config = function()
-            require("plugins.configs.lspconfig")
+            require("plugins.configs.mason")
         end,
     },
     { -- Configure LuaLS for editing nvim config files
