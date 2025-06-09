@@ -30,44 +30,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
---
---  If you want to override the default filetypes that your language server will attach to you can
---  define the property "filetypes" to the map in question.
-local servers = {
-    -- clangd = {},
-    gopls = {},
-    pyright = {},
-    -- ruff = {},
-    rust_analyzer = {},
-    -- tsserver = {},
-    -- html = { filetypes = { "html", "twig", "hbs"} },
-
-    lua_ls = {
-        Lua = {
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
-        },
-    },
-}
-
 -- Ensure language servers and tools are installed via Mason
 require("mason").setup()
 
--- You can add other tools here that you want Mason to install
--- for you, so that they are available from within Neovim.
-local ensure_installed = vim.tbl_keys(servers or {})
-vim.list_extend(ensure_installed, {
-    "ruff",
-    "eslint",
-})
 require("mason-tool-installer").setup({ ensure_installed = { "prettier", "stylua", "isort" } })
 
 require("mason-lspconfig").setup({
-    ensure_installed = ensure_installed,
+    ensure_installed = { "eslint", "gopls", "lua_ls", "pyright", "ruff", "rust_analyzer" },
     automatic_enable = true,
 })
