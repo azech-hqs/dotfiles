@@ -6,9 +6,8 @@ return {
         -- LSP Configuration & Plugins
         "neovim/nvim-lspconfig",
         dependencies = {
-            -- Automatically install LSPs to stdpath for neovim
-            { "williamboman/mason.nvim", config = true },
-            "williamboman/mason-lspconfig.nvim",
+            { "mason-org/mason.nvim", version = "*" },
+            { "mason-org/mason-lspconfig.nvim", version = "*" },
             "WhoIsSethDaniel/mason-tool-installer.nvim",
 
             -- Useful status updates for LSP

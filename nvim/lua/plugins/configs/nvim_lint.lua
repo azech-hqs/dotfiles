@@ -2,10 +2,10 @@ local lint = require("lint")
 
 lint.linters_by_ft = {
     python = { "ruff" },
-    javascript = { "eslint_d" },
-    javascriptreact = { "eslint_d" },
-    typescript = { "eslint_d" },
-    typescriptreact = { "eslint_d" },
+    javascript = { "eslint" },
+    javascriptreact = { "eslint" },
+    typescript = { "eslint" },
+    typescriptreact = { "eslint" },
 }
 
 -- Create autocommand which carries out the actual linting
