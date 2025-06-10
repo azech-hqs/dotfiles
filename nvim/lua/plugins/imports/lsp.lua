@@ -6,16 +6,15 @@ return {
         -- LSP Configuration & Plugins
         "neovim/nvim-lspconfig",
         dependencies = {
-            -- Automatically install LSPs to stdpath for neovim
-            { "williamboman/mason.nvim", config = true },
-            "williamboman/mason-lspconfig.nvim",
+            { "mason-org/mason.nvim", version = "*" },
+            { "mason-org/mason-lspconfig.nvim", version = "*" },
             "WhoIsSethDaniel/mason-tool-installer.nvim",
 
             -- Useful status updates for LSP
-            { "j-hui/fidget.nvim", tag = "legacy", opts = {} },
+            { "j-hui/fidget.nvim", version = "1.*", opts = {} },
         },
         config = function()
-            require("plugins.configs.lspconfig")
+            require("plugins.configs.mason")
         end,
     },
     { -- Configure LuaLS for editing nvim config files

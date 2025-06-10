@@ -6,7 +6,6 @@ vim.g.have_nerd_font = true
 -- Imports
 require("opts")
 require("keymaps")
-require("ui")
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -24,6 +23,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- require("plugins")
 require("lazy").setup("plugins.imports")
+require("core.lsp")
 
 -- Colorscheme
 vim.cmd.colorscheme("catppuccin")

@@ -6,7 +6,7 @@ M.opts = {
     formatters_by_ft = {
         lua = { "stylua" },
         go = { "goimports", "gofmt" },
-        python = { "isort", "ruff_format" },
+        python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
         javascript = { "prettierd", "prettier", stop_after_first = true },
         typescript = { "prettierd", "prettier", stop_after_first = true },
     },

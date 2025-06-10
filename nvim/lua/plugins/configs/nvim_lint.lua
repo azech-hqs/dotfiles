@@ -1,11 +1,12 @@
+-- Note: nvim-lint complements the built-in language server client for languages where there are no
+-- language servers, or where standalone linters provide better results.
 local lint = require("lint")
 
 lint.linters_by_ft = {
-    python = { "ruff" },
-    javascript = { "eslint_d" },
-    javascriptreact = { "eslint_d" },
-    typescript = { "eslint_d" },
-    typescriptreact = { "eslint_d" },
+    javascript = { "eslint" },
+    javascriptreact = { "eslint" },
+    typescript = { "eslint" },
+    typescriptreact = { "eslint" },
 }
 
 -- Create autocommand which carries out the actual linting
