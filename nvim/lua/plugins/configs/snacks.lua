@@ -13,6 +13,7 @@ M.opts = {
             char = "┊",
         },
     },
+    input = {},
     scroll = { enabled = true },
     statuscolumn = { enabled = true },
     terminal = {},
