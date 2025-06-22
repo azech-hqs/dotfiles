@@ -1,0 +1,9 @@
+# System
+alias ..='cd ..'
+alias ls='ls -G'
+alias ll='ls -alh'
+
+# Abbreviations
+alias vi='nvim'
+alias vim='nvim'
+alias lz='lazygit'
