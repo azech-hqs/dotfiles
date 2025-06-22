@@ -1,3 +1,4 @@
+# --- ALIASES ---
 # System
 alias ..='cd ..'
 alias ls='ls -G'
@@ -7,3 +8,11 @@ alias ll='ls -alh'
 alias vi='nvim'
 alias vim='nvim'
 alias lz='lazygit'
+
+# --- ENVIRONMENT VARS ---
+# VCS
+export GIT_EDITOR=nvim
+export SVN_EDITOR=nvim
+
+# XDG
+export XDG_CONFIG_HOME=$HOME/.config
