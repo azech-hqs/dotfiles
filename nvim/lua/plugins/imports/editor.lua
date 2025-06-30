@@ -37,14 +37,6 @@ return {
         },
     },
 
-    -- Configurable status column
-    -- {
-    --     "luukvbaal/statuscol.nvim",
-    --     config = function()
-    --         require("plugins.configs.statuscol")
-    --     end,
-    -- },
-
     -- Kitty syntax highlighting
     { "fladson/vim-kitty" },
 
