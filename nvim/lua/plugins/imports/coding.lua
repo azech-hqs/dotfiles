@@ -32,7 +32,8 @@ return {
         opts_extend = { "sources.default" },
     },
 
-    { -- Linting
+    -- Linting
+    {
         "mfussenegger/nvim-lint",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
@@ -40,10 +41,19 @@ return {
         end,
     },
 
-    { -- Autoformat
+    -- Autoformat
+    {
         "stevearc/conform.nvim",
         lazy = false,
         opts = require("plugins.configs.conform").opts,
         keys = require("plugins.configs.conform").keys,
+    },
+
+    -- Jump & Search
+    {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        opts = require("plugins.configs.flash").opts,
+        keys = require("plugins.configs.flash").keys,
     },
 }
