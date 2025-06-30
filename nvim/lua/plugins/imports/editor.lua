@@ -37,9 +37,6 @@ return {
         },
     },
 
-    -- Kitty syntax highlighting
-    { "fladson/vim-kitty" },
-
     -- Ansible file detection and convenience functions
     { "mfussenegger/nvim-ansible" },
 }
