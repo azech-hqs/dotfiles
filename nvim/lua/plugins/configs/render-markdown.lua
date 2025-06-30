@@ -1,9 +1,18 @@
-local rmd = require("render-markdown")
+local M = {}
 
-rmd.setup({
+M.opts = {
     completions = { blink = { enabled = true } },
-})
+}
 
-vim.keymap.set("n", "<leader>tm", function()
-    rmd.buf_toggle()
-end, { desc = "[T]oggle [M]arkdown render" })
+M.keys = {
+    {
+        "<leader>tm",
+        function()
+            require("render-markdown").buf_toggle()
+        end,
+        "n",
+        desc = "[T]oggle [M]arkdown render",
+    },
+}
+
+return M

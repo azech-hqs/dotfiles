@@ -1,4 +1,3 @@
----@type LazyPluginSpec[]
 return {
     -- Zettelkasten note-taking
     {
@@ -12,9 +11,7 @@ return {
     {
         "MeanderingProgrammer/render-markdown.nvim",
         dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" }, -- if you use standalone mini plugins
-        ---@module 'render-markdown'
-        config = function()
-            require("plugins.configs.render-markdown")
-        end,
+        opts = require("plugins.configs.render-markdown").opts,
+        keys = require("plugins.configs.render-markdown").keys,
     },
 }
