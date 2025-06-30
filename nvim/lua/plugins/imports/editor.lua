@@ -1,4 +1,3 @@
----@type LazyPluginSpec[]
 return {
     -- Fuzzy Finder (files, lsp, etc)
     {
@@ -30,8 +29,8 @@ return {
         -- See `:help lualine.txt`
         opts = {
             options = {
-                icons_enabled = false,
-                theme = "onedark",
+                icons_enabled = true,
+                theme = "auto",
                 component_separators = "|",
                 section_separators = "",
             },
