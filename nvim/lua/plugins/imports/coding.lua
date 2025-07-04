@@ -1,4 +1,3 @@
----@type LazyPluginSpec[]
 return {
     -- "gc" to comment visual regions/lines
     { "numToStr/Comment.nvim", opts = {} },
@@ -11,6 +10,9 @@ return {
             require("plugins.configs.mini_surround")
         end,
     },
+
+    -- Highlight word under cursor
+    { "echasnovski/mini.cursorword", version = false, opts = {} },
 
     -- Snippets
     {
