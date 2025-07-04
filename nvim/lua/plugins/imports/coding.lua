@@ -5,7 +5,7 @@ return {
     -- Add/delete/replace surroundings (brackets, quotes, etc.)
     {
         "echasnovski/mini.surround",
-        version = "*",
+        version = false,
         config = function()
             require("plugins.configs.mini_surround")
         end,
