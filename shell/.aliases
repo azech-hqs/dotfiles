@@ -1,8 +1,12 @@
 # --- ALIASES ---
 # System
 alias ..='cd ..'
-alias ls='ls -G'
-alias ll='ls -alh'
+alias lsg='ls -G'
+alias lsl='ls -alh'
+alias ls='eza --icons=auto -G'
+alias ll='eza --icons=auto --long'
+alias la='eza --icons=auto --long --all'
+alias llg='eza --icons=auto --long --git-ignore'
 
 # Abbreviations
 alias vi='nvim'
