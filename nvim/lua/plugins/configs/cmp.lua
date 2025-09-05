@@ -3,7 +3,12 @@ return {
     -- 'default' for mappings similar to built-in completion
     -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
     -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-    keymap = { preset = "default" },
+    keymap = {
+        preset = "default",
+        ["<C-i>"] = { "show_documentation", "hide_documentation" },
+        ["<C-h>"] = { "scroll_documentation_down", "fallback" },
+        ["<C-g>"] = { "scroll_documentation_up", "fallback" },
+    },
 
     appearance = {
         -- Sets the fallback highlight groups to nvim-cmp's highlight groups
