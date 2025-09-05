@@ -4,7 +4,7 @@ return {
 
     -- Add/delete/replace surroundings (brackets, quotes, etc.)
     {
-        "echasnovski/mini.surround",
+        "nvim-mini/mini.surround",
         version = false,
         config = function()
             require("plugins.configs.mini_surround")
@@ -12,7 +12,7 @@ return {
     },
 
     -- Highlight word under cursor
-    { "echasnovski/mini.cursorword", version = false, opts = {} },
+    { "nvim-mini/mini.cursorword", version = false, opts = {} },
 
     -- Snippets
     {
