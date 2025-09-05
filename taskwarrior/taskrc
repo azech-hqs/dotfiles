@@ -1,0 +1,3 @@
+data.location=~/.task
+news.version=3.4.1
+verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,recur
