@@ -94,6 +94,13 @@ M.keys = {
     { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "[G]oto T[y]pe Definition" },
     { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP [S]ymbols" },
     { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace [S]ymbols" },
+    { "gk",
+        function()
+            vim.api.nvim_open_win(0, true, { split = 'right', win = 0 })
+            Snacks.picker.lsp_definitions()
+        end,
+        desc = "[G]o to definition (new window)"
+    },
     -- snacks.lazygit
     { "<leader>ul", function() Snacks.lazygit() end, desc = "[L]azygit"},
     --stylua: ignore end
