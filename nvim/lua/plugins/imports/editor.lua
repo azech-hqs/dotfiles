@@ -39,4 +39,20 @@ return {
 
     -- Ansible file detection and convenience functions
     { "mfussenegger/nvim-ansible" },
+
+    -- Todo comment management
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {},
+        keys = {
+            {
+                "<leader>st",
+                function()
+                    Snacks.picker.todo_comments() ---@diagnostic disable-line:undefined-field
+                end,
+                desc = "[To]do",
+            },
+        },
+    },
 }
