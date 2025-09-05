@@ -3,7 +3,9 @@ vim.lsp.enable({
     "lua_ls",
     "ruff",
     "pyright",
+    "vtsls",
     -- from nvim-lspconfig
+    "vue_ls",
 })
 
 --  This function gets run when an LSP attaches to a particular buffer.
