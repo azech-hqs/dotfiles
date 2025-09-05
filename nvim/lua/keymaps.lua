@@ -61,3 +61,46 @@ vim.keymap.set(
     "<C-\\><C-n>`>?\\%V",
     { desc = "Search backward within visual selection" }
 )
+
+-- Toggle checkboxes in markdown
+-- TODO: find better implementation for filetype-specific keymap
+_G.toggle_checkbox = function(mode)
+    if vim.bo.filetype ~= "markdown" then
+        print("not markdown")
+        return
+    end
+    local mark1 = mode == "visual" and "<" or "["
+    local mark2 = mode == "visual" and ">" or "]"
+    local startpos = vim.api.nvim_buf_get_mark(0, mark1)
+    local endpos = vim.api.nvim_buf_get_mark(0, mark2)
+    local lines = vim.fn.getline(startpos[1], endpos[1])
+
+    local filler = nil
+    for index, line in ipairs(lines) do ---@diagnostic disable-line:param-type-mismatch
+        local is_toggleable = line:match("^%s*%- %[([x%s]+)%]")
+
+        if is_toggleable then
+            filler = filler or is_toggleable == "x" and " " or "x"
+            local toggled_line = line:gsub("^(%s*%- %[)[x%s]+(%])", "%1" .. filler .. "%2")
+            vim.fn.setline(startpos[1] + index - 1, toggled_line)
+        end
+    end
+end
+vim.keymap.set(
+    "n",
+    "<leader>x",
+    ":set opfunc=v:lua.toggle_checkbox<CR>g@",
+    { silent = true, desc = "Toggle checkbox" }
+)
+vim.keymap.set(
+    "x",
+    "<leader>x",
+    ":<C-U>:lua toggle_checkbox('visual')<CR>",
+    { silent = true, desc = "Toggle checkbox" }
+)
+vim.keymap.set(
+    "n",
+    "<leader>xx",
+    "<leader>x_",
+    { desc = "Toggle checkbox (current line)", remap = true }
+)
