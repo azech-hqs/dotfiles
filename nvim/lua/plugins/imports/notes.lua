@@ -10,6 +10,7 @@ return {
     -- Markdown rendering
     {
         "MeanderingProgrammer/render-markdown.nvim",
+        ft = { "markdown" },
         dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.icons" }, -- if you use standalone mini plugins
         opts = require("plugins.configs.render-markdown").opts,
         keys = require("plugins.configs.render-markdown").keys,
