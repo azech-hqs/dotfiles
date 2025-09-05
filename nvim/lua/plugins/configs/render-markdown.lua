@@ -1,6 +1,7 @@
 local M = {}
 
 M.opts = {
+    enabled = true,
     completions = { blink = { enabled = true } },
 }
 
