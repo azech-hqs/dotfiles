@@ -9,10 +9,12 @@ return {
 
     -- Markdown rendering
     {
-        "MeanderingProgrammer/render-markdown.nvim",
-        ft = { "markdown" },
-        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.icons" }, -- if you use standalone mini plugins
-        opts = require("plugins.configs.render-markdown").opts,
-        keys = require("plugins.configs.render-markdown").keys,
+        "OXY2DEV/markview.nvim",
+        lazy = false,
+        dependencies = {
+            "saghen/blink.cmp",
+            "nvim-mini/mini.icons",
+        },
+        opts = require("plugins.configs.markview").opts,
     },
 }
