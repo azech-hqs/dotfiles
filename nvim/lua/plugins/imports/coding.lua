@@ -17,11 +17,9 @@ return {
     -- Snippets
     {
         "L3MON4D3/LuaSnip",
-        dependencies = "rafamadriz/friendly-snippets",
-        opts = {
-            history = true,
-            delete_check_events = "TextChanged",
-        },
+        version = "v2.*",
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp",
     },
 
     -- Autocompletion
