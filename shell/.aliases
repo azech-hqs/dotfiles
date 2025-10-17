@@ -9,6 +9,7 @@ alias la='eza --icons=auto --long --all'
 alias llg='eza --icons=auto --long --git-ignore'
 
 # Abbreviations
+alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
 alias lz='lazygit'
