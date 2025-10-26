@@ -56,4 +56,15 @@ return {
         opts = require("plugins.configs.flash").opts,
         keys = require("plugins.configs.flash").keys,
     },
+
+    -- Diagonostics
+    {
+        "rachartier/tiny-inline-diagnostic.nvim",
+        event = "VeryLazy",
+        priority = 1000,
+        config = function()
+            require("tiny-inline-diagnostic").setup()
+            vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
+        end,
+    },
 }
