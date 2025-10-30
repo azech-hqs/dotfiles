@@ -112,3 +112,7 @@ require("treesitter-context").setup({
     zindex = 20, -- The Z-index of the context window
     on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 })
+
+vim.keymap.set("n", "<leader>tc", function()
+    require("treesitter-context").toggle()
+end, { desc = "[T]oggle [C]ontext" })
