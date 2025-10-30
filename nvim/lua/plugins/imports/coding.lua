@@ -57,7 +57,7 @@ return {
         keys = require("plugins.configs.flash").keys,
     },
 
-    -- Diagonostics
+    -- Diagnostics
     {
         "rachartier/tiny-inline-diagnostic.nvim",
         event = "VeryLazy",
