@@ -77,11 +77,11 @@ _G.toggle_checkbox = function(mode)
 
     local filler = nil
     for index, line in ipairs(lines) do ---@diagnostic disable-line:param-type-mismatch
-        local is_toggleable = line:match("^%s*%- %[([x%s]+)%]")
+        local is_toggleable = line:match("^%s*[%-%*] %[([x%s]+)%]")
 
         if is_toggleable then
             filler = filler or is_toggleable == "x" and " " or "x"
-            local toggled_line = line:gsub("^(%s*%- %[)[x%s]+(%])", "%1" .. filler .. "%2")
+            local toggled_line = line:gsub("^(%s*[%-%*] %[)[x%s]+(%])", "%1" .. filler .. "%2")
             vim.fn.setline(startpos[1] + index - 1, toggled_line)
         end
     end
