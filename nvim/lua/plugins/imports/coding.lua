@@ -6,9 +6,7 @@ return {
     {
         "nvim-mini/mini.surround",
         version = false,
-        config = function()
-            require("plugins.configs.mini_surround")
-        end,
+        opts = require("plugins.configs.mini_surround").opts,
     },
 
     -- Highlight word under cursor
