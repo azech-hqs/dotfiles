@@ -14,12 +14,12 @@ M.opts = {
         },
     },
     input = {},
+    explorer = {},
+    lazygit = {},
+    picker = {},
     scroll = { enabled = true },
     statuscolumn = { enabled = true },
     terminal = {},
-    picker = {},
-    explorer = {},
-    lazygit = {},
 }
 
 -- Keymaps
