@@ -34,7 +34,7 @@ M.keys = {
             vim.api.nvim_win_set_height(0, 15)
         end,
         "n",
-        desc = "[T]oggle [T]erminal}",
+        desc = "[T]erminal",
     },
     -- snacks.picker
     -- stylua: ignore start
@@ -53,13 +53,13 @@ M.keys = {
     { "<leader>fp", function() Snacks.picker.projects() end, desc = "[F]ind [P]rojects" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "[F]ind [R]ecent" },
     -- git
-    { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "[G]it [B]ranches" },
-    { "<leader>gl", function() Snacks.picker.git_log() end, desc = "[G]it [L]og" },
-    { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "[G]it [L]og Line" },
-    { "<leader>gs", function() Snacks.picker.git_status() end, desc = "[G]it Status" },
-    { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "[G]it [S]tash" },
-    { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "[G]it [D]iff (Hunks)" },
-    { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "[G]it Log [F]ile" },
+    { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "[B]ranches" },
+    { "<leader>gl", function() Snacks.picker.git_log() end, desc = "[L]og" },
+    { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "[L]og Line" },
+    { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Status" },
+    { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "[S]tash" },
+    { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "[D]iff (Hunks)" },
+    { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Log [F]ile" },
     -- Grep
     { "<leader>sb", function() Snacks.picker.lines() end, desc = "[B]uffer Lines" },
     { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open [B]uffers" },

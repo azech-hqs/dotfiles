@@ -115,4 +115,4 @@ require("treesitter-context").setup({
 
 vim.keymap.set("n", "<leader>tc", function()
     require("treesitter-context").toggle()
-end, { desc = "[T]oggle [C]ontext" })
+end, { desc = "Treesitter [C]ontext" })
