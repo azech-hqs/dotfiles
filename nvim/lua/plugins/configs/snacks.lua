@@ -13,6 +13,7 @@ M.opts = {
             char = "┊",
         },
     },
+    image = {},
     input = {},
     explorer = {},
     lazygit = {},
