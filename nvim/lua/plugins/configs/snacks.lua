@@ -13,6 +13,7 @@ M.opts = {
             char = "┊",
         },
     },
+    gh = {},
     image = {},
     input = {},
     explorer = {},
@@ -60,6 +61,10 @@ M.keys = {
     { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "[S]tash" },
     { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "[D]iff (Hunks)" },
     { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Log [F]ile" },
+    { "<leader>gi", function() Snacks.picker.gh_issue() end, desc = "GitHub Issues (open)" },
+    { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },
+    { "<leader>gp", function() Snacks.picker.gh_pr() end, desc = "GitHub Pull Requests (open)" },
+    { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end, desc = "GitHub Pull Requests (all)" },
     -- Grep
     { "<leader>sb", function() Snacks.picker.lines() end, desc = "[B]uffer Lines" },
     { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open [B]uffers" },
