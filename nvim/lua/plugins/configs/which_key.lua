@@ -24,6 +24,7 @@ local M = {
         { "<leader>z", group = "[Z]k notes" },
         -- visual mode
         { "<leader>h", desc = "Git [H]unk", mode = "v" },
+        { "<leader>s", desc = "[S]earch", mode = "v" },
         -- hide checkbox toggle keymap
         { "<leader>x", hidden = true },
     },
