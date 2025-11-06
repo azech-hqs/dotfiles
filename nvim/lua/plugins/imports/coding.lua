@@ -1,6 +1,11 @@
 return {
-    -- "gc" to comment visual regions/lines
-    { "numToStr/Comment.nvim", opts = {} },
+    -- Enhance Neovim's native comments
+    {
+        "folke/ts-comments.nvim",
+        opts = {},
+        event = "VeryLazy",
+        enabled = vim.fn.has("nvim-0.10.0") == 1,
+    },
 
     -- Add/delete/replace surroundings (brackets, quotes, etc.)
     {
