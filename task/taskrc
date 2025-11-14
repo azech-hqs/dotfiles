@@ -22,10 +22,10 @@ uda.mr.label=MR
 # --------------
 
 # The "Today" list
-report.today.description=Tasks committed for Today (+today)
+report.today.description=Tasks committed for Today
 report.today.columns=id,start.age,priority,project,tags,workid,repo,mr,description
 report.today.labels=ID,Active,Pri,Project,Tags,WorkID,Repo,MR,Description
-report.today.filter=status:pending +today
+report.today.filter=status:pending -backlog -sprint
 report.today.sort=priority-,start-,id+
 
 # The "Sprint" (Anytime) list
