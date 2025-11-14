@@ -53,7 +53,7 @@ report.recent.sort=end-
 # --------------
 
 # Move task to the "Today" list
-alias.mv.today=mod start:today -sprint -backlog
+alias.mv.today=mod start:now -sprint -backlog
 
 # Move task to the "Sprint" list
 alias.mv.sprint=mod +sprint -backlog start:
