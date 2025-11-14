@@ -1,6 +1,6 @@
 ---
 date: {{format-date now "%d.%m.%Y %T"}}
-keywords: [project]
+tags: [project]
 ---
 # {{title}}
 

@@ -1,6 +1,6 @@
 ---
 date: {{format-date now "%d.%m.%Y %T"}}
-keywords: [daily, scrum]
+tags: [daily, scrum]
 ---
 # Daily: {{format-date now "long"}}
 
