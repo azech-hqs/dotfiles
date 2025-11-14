@@ -1,3 +1,62 @@
-data.location=~/.task
+data.location=~/.local/share/task
+hooks.location=~/.config/task/hooks
 news.version=3.4.1
 verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,recur
+
+# Custom User Defined Attributes (UDA)
+# ------------------------------------
+
+# Issue tracker IDs
+uda.workid.type=string
+uda.workid.label=Issue ID
+
+# Git repositories
+uda.repo.type=string
+uda.repo.label=Repo
+
+# Merge requests / pull requests
+uda.mr.type=string
+uda.mr.label=MR
+
+# Custom Reports
+# --------------
+
+# The "Today" list
+report.today.description=Tasks committed for Today (+today)
+report.today.columns=id,start.age,priority,project,tags,workid,repo,mr,description
+report.today.labels=ID,Active,Pri,Project,Tags,WorkID,Repo,MR,Description
+report.today.filter=status:pending +today
+report.today.sort=priority-,start-,id+
+
+# The "Sprint" (Anytime) list
+report.sprint.description=Tasks planned for this Sprint (+sprint)
+report.sprint.columns=id,priority,project,tags,workid,repo,mr,description
+report.sprint.labels=ID,Pri,Project,Tags,WorkID,Repo,MR,Description
+report.sprint.filter=status:pending +sprint
+report.sprint.sort=priority-,id+
+
+# The "Backlog" (Someday) list
+report.backlog.description=All potential tasks (+backlog)
+report.backlog.columns=id,project,tags,workid,description
+report.backlog.labels=ID,Project,Tags,WorkID,Description
+report.backlog.filter=status:pending +backlog
+report.backlog.sort=id+
+
+# Recently done tasks (for standup)
+report.recent.description=Recently completed tasks (for standup)
+report.recent.columns=id,end.age,project,tags,workid,repo,mr,description
+report.recent.labels=ID,Completed,Project,Tags,WorkID,Repo,MR,Description
+report.recent.filter=status:completed
+report.recent.sort=end-
+
+# Custom Aliases
+# --------------
+
+# Move task to the "Today" list
+alias.mv.today=mod start:today -sprint -backlog
+
+# Move task to the "Sprint" list
+alias.mv.sprint=mod +sprint -backlog start:
+
+# Move task to the "Backlog" list
+alias.mv.backlog=mod +backlog -sprint start:
