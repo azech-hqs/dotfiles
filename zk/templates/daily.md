@@ -4,6 +4,6 @@ keywords: [daily, scrum]
 ---
 # Daily: {{format-date now "long"}}
 
-Last working day:
+[Last working day]({{sh 'zk list meetings/daily --format="{{filename}}" --limit=1 --created-before=today'}}):
 
 Today:
