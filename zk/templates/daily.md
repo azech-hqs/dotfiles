@@ -4,7 +4,7 @@ tags: [daily, scrum]
 ---
 # Daily: {{format-date now "long"}}
 
-[Last working day]({{sh 'zk list meetings/daily --format="{{filename}}" --limit=1 --created-before=today'}}):
+[Last working day]({{sh 'zk list meetings/daily --format="{{filename}}" --limit=1 --created-before=today --sort=created'}}):
 {{sh "~/.config/task/tw-last-working-day.sh"}}
 
 Today:
