@@ -37,8 +37,8 @@ report.sprint.sort=priority-,id+
 
 # The "Backlog" (Someday) list
 report.backlog.description=All potential tasks (+backlog)
-report.backlog.columns=id,project,tags,workid,description
-report.backlog.labels=ID,Project,Tags,WorkID,Description
+report.sprint.columns=id,priority,project,tags,workid,repo,mr,description
+report.sprint.labels=ID,Pri,Project,Tags,WorkID,Repo,MR,Description
 report.backlog.filter=status:pending +backlog
 report.backlog.sort=id+
 
