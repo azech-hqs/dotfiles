@@ -25,8 +25,8 @@ uda.mr.label=MR
 report.today.description=Tasks committed for Today
 report.today.columns=id,start.age,priority,project,tags,workid,repo,mr,description
 report.today.labels=ID,Active,Pri,Project,Tags,WorkID,Repo,MR,Description
-report.today.filter=status:pending -backlog -sprint
-report.today.sort=priority-,start-,id+
+report.today.filter=status:pending +today
+report.today.sort=priority-,id+
 
 # The "Sprint" (Anytime) list
 report.sprint.description=Tasks planned for this Sprint (+sprint)
@@ -53,10 +53,10 @@ report.recent.sort=end-
 # --------------
 
 # Move task to the "Today" list
-alias.mv.today=mod start:now -sprint -backlog
+alias.mv.today=mod +today -sprint -backlog
 
 # Move task to the "Sprint" list
-alias.mv.sprint=mod +sprint -backlog start:
+alias.mv.sprint=mod +sprint -backlog -today
 
 # Move task to the "Backlog" list
-alias.mv.backlog=mod +backlog -sprint start:
+alias.mv.backlog=mod +backlog -sprint -today
