@@ -1,6 +1,9 @@
 return {
-    -- NOTE: This is where your plugins related to LSP can be installed.
-    --  The configuration is done below. Search for lspconfig to find it below.
+    { -- Configure LuaLS for editing nvim config files
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {},
+    },
     {
         -- LSP Configuration & Plugins
         "neovim/nvim-lspconfig",
@@ -15,10 +18,5 @@ return {
         config = function()
             require("plugins.configs.mason")
         end,
-    },
-    { -- Configure LuaLS for editing nvim config files
-        "folke/lazydev.nvim",
-        ft = "lua",
-        opts = {},
     },
 }
