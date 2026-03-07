@@ -37,6 +37,7 @@ vim.opt.timeoutlen = 400        -- int: Milliseconds to wait for mapped sequence
 
 -- Other
 vim.opt.undofile = true         -- bool: Whether to save undo history
+vim.opt.winborder = "rounded"   -- str: default border for all floating windows
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
