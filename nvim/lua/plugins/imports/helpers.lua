@@ -1,9 +1,4 @@
 return {
-    -- Show key bindings
-    {
-        "folke/which-key.nvim",
-        opts = require("plugins.configs.which_key"),
-    },
     -- QoL improvements
     {
         "folke/snacks.nvim",

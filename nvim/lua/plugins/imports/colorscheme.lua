@@ -1,15 +1,4 @@
 return {
-    -- catppuccin
-    {
-        "catppuccin/nvim",
-        lazy = false,
-        name = "catppuccin",
-        priority = 1000,
-        opts = {
-            flavour = "macchiato",
-            integrations = { blink_cmp = true },
-        },
-    },
     {
         "rachartier/tiny-glimmer.nvim",
         event = "VeryLazy",
