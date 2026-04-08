@@ -1,12 +1,4 @@
 return {
-    -- Enhance Neovim's native comments
-    {
-        "folke/ts-comments.nvim",
-        opts = {},
-        event = "VeryLazy",
-        enabled = vim.fn.has("nvim-0.10.0") == 1,
-    },
-
     -- Add/delete/replace surroundings (brackets, quotes, etc.)
     {
         "nvim-mini/mini.surround",
@@ -16,15 +8,6 @@ return {
 
     -- Highlight word under cursor
     { "nvim-mini/mini.cursorword", version = false, opts = {} },
-
-    -- Linting
-    {
-        "mfussenegger/nvim-lint",
-        event = { "BufReadPre", "BufNewFile" },
-        config = function()
-            require("plugins.configs.nvim_lint")
-        end,
-    },
 
     -- Jump & Search
     {
