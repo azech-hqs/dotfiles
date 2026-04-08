@@ -8,12 +8,4 @@ return {
 
     -- Highlight word under cursor
     { "nvim-mini/mini.cursorword", version = false, opts = {} },
-
-    -- Jump & Search
-    {
-        "folke/flash.nvim",
-        event = "VeryLazy",
-        opts = require("plugins.configs.flash").opts,
-        keys = require("plugins.configs.flash").keys,
-    },
 }
