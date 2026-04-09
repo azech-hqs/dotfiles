@@ -5,7 +5,4 @@ return {
         version = false,
         opts = require("plugins.configs.mini_surround").opts,
     },
-
-    -- Highlight word under cursor
-    { "nvim-mini/mini.cursorword", version = false, opts = {} },
 }
