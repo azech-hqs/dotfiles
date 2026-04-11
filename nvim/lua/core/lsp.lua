@@ -92,4 +92,15 @@ vim.diagnostic.config({
             return diagnostic_message[diagnostic.severity]
         end,
     },
+    -- Automatically open the float
+    jump = { float = true },
 })
+
+-- Diagnostic keymaps
+vim.keymap.set(
+    "n",
+    "<leader>cd",
+    vim.diagnostic.open_float,
+    { desc = "Open floating [d]iagnostic message" }
+)
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })

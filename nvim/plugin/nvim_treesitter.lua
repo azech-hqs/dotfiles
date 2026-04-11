@@ -83,15 +83,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- Diagnostic keymaps
-vim.keymap.set(
-    "n",
-    "<leader>cd",
-    vim.diagnostic.open_float,
-    { desc = "Open floating [d]iagnostic message" }
-)
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
-
 -- Treesitter-context
 require("treesitter-context").setup({
     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
