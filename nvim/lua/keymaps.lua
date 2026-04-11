@@ -104,3 +104,11 @@ vim.keymap.set(
     "<leader>x_",
     { desc = "Toggle checkbox (current line)", remap = true }
 )
+
+-- Undotree toggle
+vim.cmd("packadd nvim.undotree")
+vim.keymap.set("n", "<leader>ut", function()
+    require("undotree").open({
+        command = math.floor(vim.api.nvim_win_get_width(0) / 3) .. "vnew",
+    })
+end, { desc = "[U]ndotree toggle" })
