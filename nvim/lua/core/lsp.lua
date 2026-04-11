@@ -21,11 +21,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
 
-        map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-        map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-
-        map("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
-
         -- See `:help K` for why this keymap
         map("K", vim.lsp.buf.hover, "Hover Documentation")
         map("<leader>k", vim.lsp.buf.signature_help, "Signature Documentation")

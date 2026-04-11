@@ -85,7 +85,7 @@ vim.keymap.set("n", "<leader>uC", function() Snacks.picker.colorschemes() end, {
 -- LSP
 vim.keymap.set("n", "gd", function() Snacks.picker.lsp_definitions() end, { desc = "[G]oto [D]efinition" })
 vim.keymap.set("n", "gD", function() Snacks.picker.lsp_declarations() end, { desc = "[G]oto [D]eclaration" })
-vim.keymap.set("n", "gr", function() Snacks.picker.lsp_references() end, { desc = "[R]eferences" })
+vim.keymap.set("n", "gR", function() Snacks.picker.lsp_references() end, { desc = "[R]eferences" })
 vim.keymap.set("n", "gI", function() Snacks.picker.lsp_implementations() end, { desc = "[G]oto [I]mplementation" })
 vim.keymap.set("n", "gy", function() Snacks.picker.lsp_type_definitions() end, { desc = "[G]oto T[y]pe Definition" })
 vim.keymap.set("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, { desc = "LSP [S]ymbols" })
