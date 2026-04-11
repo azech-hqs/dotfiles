@@ -25,20 +25,4 @@ return {
 
     -- Ansible file detection and convenience functions
     { "mfussenegger/nvim-ansible" },
-
-    -- Debug Adapter Protocol (DAP)
-    {
-        "mfussenegger/nvim-dap",
-        dependencies = { "mfussenegger/nvim-dap-python" },
-        config = function()
-            require("plugins.configs.dap")
-        end,
-    },
-
-    -- DAP UI
-    {
-        "igorlfs/nvim-dap-view",
-        lazy = false,
-        opts = {},
-    },
 }
