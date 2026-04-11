@@ -44,6 +44,3 @@ vim.opt.winborder = "rounded"   -- str: default border for all floating windows
 --  See `:help 'clipboard'`
 vim.opt.clipboard = 'unnamedplus'
 -- stylua: ignore end
-
--- Diagnostic Settings
-vim.diagnostic.config({ jump = { float = true } })

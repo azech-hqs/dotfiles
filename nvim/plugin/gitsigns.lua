@@ -1,6 +1,6 @@
----@diagnostic disable: missing-fields
----@type Gitsigns.Config
-return {
+vim.pack.add({ "https://github.com/lewis6991/gitsigns.nvim" })
+
+require("gitsigns").setup({
     signs = {
         add = { text = "┃" },
         change = { text = "┃" },
@@ -111,4 +111,4 @@ return {
         -- Text object
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
     end,
-}
+})

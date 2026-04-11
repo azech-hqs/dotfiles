@@ -1,6 +1,8 @@
-local M = {}
+vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
 
-M.opts = {
+local conform = require("conform")
+
+conform.setup({
     notify_on_error = false,
     format_on_save = nil,
     formatters_by_ft = {
@@ -13,17 +15,8 @@ M.opts = {
         typescriptreact = { "prettierd", "prettier", stop_after_first = true },
         vue = { "prettierd", "prettier", stop_after_first = true },
     },
-}
+})
 
-M.keys = {
-    {
-        "<leader>cf",
-        function()
-            require("conform").format({ async = true, lsp_fallback = true })
-        end,
-        "n",
-        desc = "[C]ode [F]ormat buffer",
-    },
-}
-
-return M
+vim.keymap.set("n", "<leader>cf", function()
+    conform.format({ async = true, lsp_fallback = true })
+end, { desc = "[C]ode [F]ormat buffer" })

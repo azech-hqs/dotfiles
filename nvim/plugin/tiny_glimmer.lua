@@ -1,6 +1,6 @@
-local M = {}
+vim.pack.add({ "https://github.com/rachartier/tiny-glimmer.nvim" })
 
-M.opts = {
+require("tiny-glimmer").setup({
     -- Enable/disable the plugin
     enabled = true,
 
@@ -56,17 +56,8 @@ M.opts = {
             redo_mapping = "<c-r>",
         },
     },
-}
+})
 
-M.keys = {
-    {
-        "<leader>H",
-        function()
-            require("tiny-glimmer.lib").cursor_line("pulse")
-        end,
-        "n",
-        desc = "Animate current line",
-    },
-}
-
-return M
+vim.keymap.set("n", "<leader>H", function()
+    require("tiny-glimmer.lib").cursor_line("pulse")
+end, { desc = "Animate current line" })

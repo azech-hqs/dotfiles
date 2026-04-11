@@ -1,3 +1,9 @@
+vim.pack.add({
+    "https://github.com/mfussenegger/nvim-dap",
+    "https://github.com/mfussenegger/nvim-dap-python",
+    "https://github.com/igorlfs/nvim-dap-view",
+})
+
 local dap = require("dap")
 local dv = require("dap-view")
 

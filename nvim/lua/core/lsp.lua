@@ -21,11 +21,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
 
-        map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-        map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-
-        map("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
-
         -- See `:help K` for why this keymap
         map("K", vim.lsp.buf.hover, "Hover Documentation")
         map("<leader>k", vim.lsp.buf.signature_help, "Signature Documentation")
@@ -97,4 +92,15 @@ vim.diagnostic.config({
             return diagnostic_message[diagnostic.severity]
         end,
     },
+    -- Automatically open the float
+    jump = { float = true },
 })
+
+-- Diagnostic keymaps
+vim.keymap.set(
+    "n",
+    "<leader>cd",
+    vim.diagnostic.open_float,
+    { desc = "Open floating [d]iagnostic message" }
+)
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })

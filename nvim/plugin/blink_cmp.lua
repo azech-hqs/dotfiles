@@ -1,4 +1,8 @@
-return {
+vim.pack.add({
+    { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.x") },
+})
+
+require("blink.cmp").setup({
     -- 'default' for mappings similar to built-in completion
     -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
     -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
@@ -38,4 +42,4 @@ return {
             end,
         },
     },
-}
+})

@@ -1,6 +1,6 @@
-local M = {}
+vim.pack.add({ "https://github.com/OXY2DEV/markview.nvim" })
 
-M.opts = {
+require("markview").setup({
     preview = {
         icon_provider = "mini", -- "mini", "internal", or "devicons"
     },
@@ -24,8 +24,4 @@ M.opts = {
             },
         },
     },
-}
-
-M.keys = {}
-
-return M
+})

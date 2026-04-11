@@ -1,6 +1,6 @@
----@class wk.Opts
-local M = {
-    -- Document existing key chains
+vim.pack.add({ "https://github.com/folke/which-key.nvim" })
+
+require("which-key").setup({
     spec = {
         { "<leader>b", group = "[B]uffer" },
         { "<leader>c", group = "[C]ode" },
@@ -28,6 +28,4 @@ local M = {
         -- hide checkbox toggle keymap
         { "<leader>x", hidden = true },
     },
-}
-
-return M
+})

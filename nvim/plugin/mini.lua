@@ -1,6 +1,8 @@
-local M = {}
+vim.pack.add({ "https://github.com/nvim-mini/mini.nvim" })
 
-M.opts = {
+require("mini.cursorword").setup()
+require("mini.icons").setup()
+require("mini.surround").setup({
     mappings = {
         add = "gsa", -- Add surrounding in Normal and Visual modes
         delete = "gsd", -- Delete surrounding
@@ -12,6 +14,4 @@ M.opts = {
         suffix_last = "gl", -- Suffix to search with "prev" method
         suffix_next = "gn", -- Suffix to search with "next" method
     },
-}
-
-return M
+})
