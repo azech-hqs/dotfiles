@@ -59,8 +59,7 @@ vim.keymap.set("n", "<leader>gP", function() Snacks.picker.gh_pr({ state = "all"
 vim.keymap.set("n", "<leader>sb", function() Snacks.picker.lines() end, { desc = "[B]uffer Lines" })
 vim.keymap.set("n", "<leader>sB", function() Snacks.picker.grep_buffers() end, { desc = "Grep Open [B]uffers" })
 vim.keymap.set("n", "<leader>sg", function() Snacks.picker.grep() end, { desc = "[G]rep" })
-vim.keymap.set("n", "<leader>sw", function() Snacks.picker.grep_word() end, { desc = "Visual selection or [w]ord" })
-vim.keymap.set("x", "<leader>sw", function() Snacks.picker.grep_word() end, { desc = "Visual selection or [w]ord" })
+vim.keymap.set({ "n", "x" }, "<leader>sw", function() Snacks.picker.grep_word() end, { desc = "Visual selection or [w]ord" })
 -- search
 vim.keymap.set("n", '<leader>s"', function() Snacks.picker.registers() end, { desc = "Registers" })
 vim.keymap.set("n", '<leader>s/', function() Snacks.picker.search_history() end, { desc = "[S]earch History" })
