@@ -12,6 +12,7 @@ require("which-key").setup({
         { "<leader>h", group = "Git [H]unk" },
         { "<leader>h_", hidden = true },
         { "<leader>l", group = "[L]azygit" },
+        { "<leader>o", group = "[O]pencode" },
         { "<leader>r", group = "[R]ename" },
         { "<leader>r_", hidden = true },
         { "<leader>s", group = "[S]earch" },
