@@ -112,3 +112,38 @@ vim.keymap.set("n", "<leader>ut", function()
         command = math.floor(vim.api.nvim_win_get_width(0) / 3) .. "vnew",
     })
 end, { desc = "[U]ndotree toggle" })
+
+-- Invert word toggle
+local function toggle()
+    local toggles = {
+        ["true"] = "false",
+        ["True"] = "False",
+        ["always"] = "never",
+        ["yes"] = "no",
+        ["1"] = "0",
+        ["on"] = "off",
+        ["&&"] = "||",
+        ["+"] = "-",
+        ["<"] = ">",
+        ["<="] = ">=",
+        ["let"] = "const",
+    }
+
+    local cword = vim.fn.expand("<cword>")
+    local newWord
+    for word, opposite in pairs(toggles) do
+        if cword == word then
+            newWord = opposite
+        end
+        if cword == opposite then
+            newWord = word
+        end
+    end
+    if newWord then
+        local prevCursor = vim.api.nvim_win_get_cursor(0)
+        vim.cmd.normal({ '"_ciw' .. newWord, bang = true })
+        vim.api.nvim_win_set_cursor(0, prevCursor)
+    end
+end
+
+vim.keymap.set("n", "<leader>tw", toggle, { desc = "[T]oggle [W]ord inverse" })
