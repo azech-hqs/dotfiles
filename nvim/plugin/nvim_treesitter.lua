@@ -35,7 +35,6 @@ local parsers = {
     "vue",
 }
 ts.install(parsers)
-ts.update("all")
 
 ---@param buf integer
 ---@param language string
