@@ -1,0 +1,13 @@
+# Repo meta — not dotfiles to deploy into $HOME
+/README.md
+/CLAUDE.md
+/LICENSE
+/prek.toml
+/cargo_installed
+
+# Deferred until zsh/shell are untangled
+/shell
+/zsh
+
+# TPM-installed plugins (managed by tmux plugin manager, not chezmoi)
+.config/tmux/plugins
