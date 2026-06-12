@@ -4,6 +4,7 @@
 /LICENSE
 /prek.toml
 /cargo_installed
+/bootstrap.sh
 
 # Deferred until zsh/shell are untangled
 /shell
