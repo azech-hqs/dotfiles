@@ -4,7 +4,6 @@ local conform = require("conform")
 
 conform.setup({
     notify_on_error = false,
-    format_on_save = nil,
     formatters_by_ft = {
         lua = { "stylua" },
         go = { "goimports", "gofmt" },
@@ -18,5 +17,5 @@ conform.setup({
 })
 
 vim.keymap.set("n", "<leader>cf", function()
-    conform.format({ async = true, lsp_fallback = true })
+    conform.format({ async = true, lsp_format = "fallback" })
 end, { desc = "[C]ode [F]ormat buffer" })

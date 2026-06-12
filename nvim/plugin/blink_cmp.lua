@@ -8,7 +8,7 @@ require("blink.cmp").setup({
     -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
     keymap = {
         preset = "default",
-        ["<C-i>"] = { "show_documentation", "hide_documentation" },
+        ["<C-k>"] = { "show_documentation", "hide_documentation" },
         ["<C-h>"] = { "scroll_documentation_down", "fallback" },
         ["<C-g>"] = { "scroll_documentation_up", "fallback" },
     },
