@@ -6,9 +6,5 @@
 /cargo_installed
 /bootstrap.sh
 
-# Deferred until zsh/shell are untangled
-/shell
-/zsh
-
 # TPM-installed plugins (managed by tmux plugin manager, not chezmoi)
 .config/tmux/plugins

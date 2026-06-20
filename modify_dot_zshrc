@@ -1,0 +1,24 @@
+#!/bin/sh
+# Managed by chezmoi. stdin is this machine's current ~/.zshrc.
+#
+# Everything outside the marked block is preserved verbatim (oh-my-zsh setup,
+# per-machine source statements, etc.); only the block is rewritten on apply.
+# This lets the same dotfiles drive machines whose base ~/.zshrc differs.
+
+# Emit the current file with any previous managed block removed.
+sed '/^# >>> chezmoi managed >>>$/,/^# <<< chezmoi managed <<<$/d'
+
+# Re-append a fresh managed block at the end, so it loads after oh-my-zsh and
+# its aliases/keymaps win over plugin and theme defaults.
+cat <<'BLOCK'
+# >>> chezmoi managed >>>
+# Loads modular zsh config from ~/.config/zsh. Edit the dotfiles repo, not here.
+# Numeric prefixes set load order: env -> tools -> aliases -> keymaps.
+# `(N.)` = only existing regular files, so an empty dir is fine and stray
+# non-files are skipped.
+for _zsh_conf in "$HOME"/.config/zsh/*.zsh(N.); do
+    source "$_zsh_conf"
+done
+unset _zsh_conf
+# <<< chezmoi managed <<<
+BLOCK

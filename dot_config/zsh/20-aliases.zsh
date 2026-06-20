@@ -7,7 +7,7 @@ alias ll='eza --icons=auto --long'
 alias la='eza --icons=auto --long --all'
 alias llg='eza --icons=auto --long --git-ignore'
 
-# Use zoxide if available.
+# Use zoxide if available (initialised in 10-zoxide.zsh).
 if command -v z &> /dev/null; then
     alias cd='z'
 fi

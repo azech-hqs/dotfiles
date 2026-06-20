@@ -5,8 +5,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a personal dotfiles repository for macOS and Ubuntu/Debian, managed with
 [chezmoi](https://www.chezmoi.io/). Program configs live under `dot_config/<program>/`
 (`nvim`, `tmux`, `ghostty`, `kitty`, `wezterm`, `bat`, `eza`, `zk`, `task`,
-`tmux-sessionizer`), which chezmoi deploys to `~/.config/<program>/` as copies (not
-symlinks). There is no build step. See `README.md` for the bootstrap and everyday
+`tmux-sessionizer`, `zsh`), which chezmoi deploys to `~/.config/<program>/` as copies
+(not symlinks). There is no build step. See `README.md` for the bootstrap and everyday
 workflow.
 
 chezmoi specifics worth knowing before editing:
@@ -16,8 +16,7 @@ chezmoi specifics worth knowing before editing:
 - After changing a file under `dot_config/`, run `chezmoi apply` to update `$HOME`
   (deployed files are copies, so the repo and `$HOME` only sync on `apply`/`re-add`).
 - `.chezmoiignore` lists paths that must **not** be deployed: repo meta (`README.md`,
-  `CLAUDE.md`, `LICENSE`, `prek.toml`, `bootstrap.sh`), the not-yet-migrated `zsh/` and
-  `shell/` configs, and TPM-installed tmux plugins.
+  `CLAUDE.md`, `LICENSE`, `prek.toml`, `bootstrap.sh`) and TPM-installed tmux plugins.
 
 ## Conventions
 
@@ -39,6 +38,27 @@ prek run --all-files
 
 This runs StyLua plus the builtin hooks (trailing whitespace, end-of-file fixer, large-file
 check, TOML/YAML validation, merge-conflict check).
+
+## Shell (zsh) architecture
+
+`~/.zshrc` is **not owned** by chezmoi. `modify_dot_zshrc` is a chezmoi `modify_`
+script: on every `apply` chezmoi pipes the machine's current `~/.zshrc` into it on
+stdin and replaces the file with the script's stdout. The script strips and
+re-appends a single delimited block (`# >>> chezmoi managed >>>` … `# <<< … <<<`)
+at EOF that sources `~/.config/zsh/*.zsh`; everything outside the block is preserved
+verbatim, so machines with different base `~/.zshrc` files share these dotfiles. The
+strip-then-append is idempotent. The block lands at EOF so it loads after oh-my-zsh.
+
+Modular config lives in `dot_config/zsh/`, loaded in numeric order:
+`00-env.zsh` (machine-agnostic env) → `10-*.zsh` (per-tool glue) → `20-aliases.zsh`
+→ `30-keymaps.zsh`. Ordering matters: e.g. `10-zoxide.zsh` must precede
+`20-aliases.zsh` because the `cd='z'` alias is guarded on `z` already existing.
+
+The `10-*.zsh` files are a **stopgap** for tool PATH/init lines (pnpm, zoxide, fzf,
+opencode, uv) destined for a future provisioning repo (ansible); each is guarded
+(`command -v …` / file-exists) so a missing tool never errors shell startup. Because
+`dot_config/zsh/` is **not** `exact_`, provisioning may drop further `*.zsh` files
+into `~/.config/zsh/` without `chezmoi apply` deleting them.
 
 ## Neovim architecture
 
