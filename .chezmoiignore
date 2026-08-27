@@ -1,10 +1,10 @@
 # Repo meta — not dotfiles to deploy into $HOME
-/README.md
-/CLAUDE.md
-/LICENSE
-/prek.toml
-/cargo_installed
-/bootstrap.sh
+README.md
+CLAUDE.md
+LICENSE
+prek.toml
+cargo_installed
+bootstrap.sh
 
 # TPM-installed plugins (managed by tmux plugin manager, not chezmoi)
 .config/tmux/plugins
