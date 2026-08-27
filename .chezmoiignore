@@ -6,5 +6,6 @@ prek.toml
 cargo_installed
 bootstrap.sh
 
-# TPM-installed plugins (managed by tmux plugin manager, not chezmoi)
+# tmux plugins: cloned at a pinned tag by
+# .chezmoiscripts/run_once_after_install-tmux-plugins.sh, not deployed from here
 .config/tmux/plugins

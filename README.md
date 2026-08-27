@@ -49,6 +49,30 @@ brings its own shell glue (and OS-correct paths) when installed. Because
 `~/.config/zsh/` is not an `exact_` directory, provisioning can drop additional
 `*.zsh` files there without `chezmoi apply` removing them.
 
+## tmux plugins
+
+tmux plugins are **not** deployed as dotfiles — `.chezmoiignore` excludes
+`.config/tmux/plugins`, and `tmux.conf` `run`s them from there. They are
+installed instead by `.chezmoiscripts/run_once_after_install-tmux-plugins.sh`,
+which clones each plugin at a **pinned tag** (no TPM: one manager, and the
+version lives in git).
+
+To bump a plugin, edit the version in that script and run `chezmoi apply` —
+chezmoi keys `run_once_` scripts on their contents, so changing the tag makes it
+re-run and move the existing checkout onto the new tag.
+
+Currently pinned:
+
+| plugin | version |
+| --- | --- |
+| [catppuccin/tmux](https://github.com/catppuccin/tmux) | `v2.3.0` |
+
+The theme block in `dot_config/tmux/tmux.conf` uses **v2** option names. v2
+renamed or removed most of the v1/v0.3 ones (`@catppuccin_window_default_text` →
+`@catppuccin_window_text`, the `_fill` and `@catppuccin_status_fill` options are
+gone), and unknown `@catppuccin_*` options fail silently — so the config and the
+pinned version have to move together.
+
 ## Not yet managed
 
 Per-OS templating and secrets (SSH keys / API tokens pulled from KeePassXC and

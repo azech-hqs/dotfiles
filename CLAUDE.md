@@ -16,7 +16,12 @@ chezmoi specifics worth knowing before editing:
 - After changing a file under `dot_config/`, run `chezmoi apply` to update `$HOME`
   (deployed files are copies, so the repo and `$HOME` only sync on `apply`/`re-add`).
 - `.chezmoiignore` lists paths that must **not** be deployed: repo meta (`README.md`,
-  `CLAUDE.md`, `LICENSE`, `prek.toml`, `bootstrap.sh`) and TPM-installed tmux plugins.
+  `CLAUDE.md`, `LICENSE`, `prek.toml`, `bootstrap.sh`) and `.config/tmux/plugins`.
+- tmux plugins are installed by `.chezmoiscripts/run_once_after_install-tmux-plugins.sh`,
+  which clones each at a pinned tag (there is no TPM). chezmoi keys `run_once_` scripts
+  on their contents, so bumping a tag in that script makes the next `apply` re-run it.
+  `dot_config/tmux/tmux.conf` uses catppuccin **v2** option names — the config and the
+  pinned tag must move together, since unknown `@catppuccin_*` options fail silently.
 
 ## Conventions
 
