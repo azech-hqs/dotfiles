@@ -7,6 +7,7 @@ vim.lsp.enable({
     -- from nvim-lspconfig
     "vue_ls",
     "rust_analyzer",
+    "gitlab_ci_ls",
 })
 
 --  This function gets run when an LSP attaches to a particular buffer.
