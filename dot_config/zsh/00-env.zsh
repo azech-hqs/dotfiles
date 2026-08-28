@@ -11,7 +11,7 @@ export SVN_EDITOR=nvim
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # Taskwarrior
-export TASKRC="$XDG_CONFIG_HOME/taskwarrior/taskrc"
+export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 
 # PATH
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/bin:$PATH"
