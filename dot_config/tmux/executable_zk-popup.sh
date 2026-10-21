@@ -9,7 +9,7 @@ set -o history 2>/dev/null || true # so read -e can recall previous input
 
 LIMIT="${1:-8}"
 
-HINT='⏎ new note · /… search · @ daily · ? help · q quit'
+HINT='⏎ new note · /… search · :alias … · @ daily · ? help · q quit'
 
 # zk discovers the notebook on its own, but the `daily` alias in config.toml
 # interpolates $ZK_NOTEBOOK_DIR, so resolve it here if the shell has not.
@@ -20,6 +20,23 @@ if [ -z "${ZK_NOTEBOOK_DIR:-}" ]; then
         export ZK_NOTEBOOK_DIR="${zk_dir/#\~/$HOME}"
     fi
 fi
+
+# Aliases come from zk itself (global and notebook config merged), so
+# machine-specific ones like `meet` or `proj` show up without being listed
+# here. One "name<TAB>command" per line; empty if zk or jq is unavailable.
+ZK_ALIASES=$(zk config --list aliases --format json --quiet --no-pager 2>/dev/null |
+    jq -r 'to_entries[] | "\(.key)\t\(.value)"' 2>/dev/null)
+
+alias_cmd() { # print the command behind zk alias $1, fail if there is none
+    [ -n "$1" ] || return 1
+    printf '%s\n' "$ZK_ALIASES" |
+        awk -F '\t' -v n="$1" '$1 == n { sub(/^[^\t]*\t/, ""); print; f = 1 } END { exit !f }'
+}
+
+alias_names() { # ":daily · :pm · …" for the hint line
+    printf '%s\n' "$ZK_ALIASES" | cut -f1 | sed '/^$/d; s/^/:/' | paste -sd '\t' - |
+        sed 's/\t/ · /g'
+}
 
 trim() { # strip leading/trailing whitespace from $1
     local s=$1
@@ -38,10 +55,17 @@ show_help() {
     new q                      new note titled "q" (escapes the words below)
     /gitlab                    search notes matching "gitlab", pick with fzf
     /                          browse every note with fzf
-    @  or  daily               open today's daily note
+    :<alias>                   run a zk alias from your config
+    :<alias> Some title        ... passing the title, if the alias runs zk new
+    @                          shortcut for :daily
     q                          quit
 
 EOF
+    if [ -n "$ZK_ALIASES" ]; then
+        printf '  Aliases:\n'
+        printf '%s\n' "$ZK_ALIASES" | awk -F '\t' '{ printf "    :%-22s %s\n", $1, $2 }'
+        echo
+    fi
     printf '  Notes land in %s using the default template.\n' \
         "${ZK_NOTEBOOK_DIR:-the notebook zk discovers}"
     printf '  Show more recent notes on open:  zk-popup.sh 20\n\n'
@@ -64,6 +88,8 @@ while true; do
         printf '  \033[31m✗\033[0m could not read the notebook\n'
     echo
     printf '  \033[2m%s\033[0m\n' "$HINT"
+    names=$(alias_names)
+    [ -n "$names" ] && printf '  \033[2maliases  %s\033[0m\n' "$names"
     [ -n "$status" ] && printf '  %b\n' "$status"
     status=''
     echo
@@ -85,9 +111,31 @@ while true; do
 
     echo
     case "$input" in
-    '@' | daily)
-        label='daily note'
-        zk daily
+    '@' | :*)
+        [ "$input" = '@' ] && input=':daily'
+        rest=$(trim "${input#:}")
+        name=${rest%%[[:space:]]*}
+        args=$(trim "${rest#"$name"}")
+        label="alias :${name}${args:+ $args}"
+        if ! cmd=$(alias_cmd "$name"); then
+            printf '  no zk alias named "%s"\n' "$name"
+            false
+        elif [ "${cmd#zk new}" != "$cmd" ]; then
+            # Note-creating aliases take the rest of the line as the title;
+            # zk drops it for aliases without $@ (e.g. a --no-input daily).
+            if [ -n "$args" ]; then
+                zk "$name" --title "$args"
+            else
+                zk "$name"
+            fi
+        else
+            # shellcheck disable=SC2086 # split on purpose, e.g. `:lucky --limit 3`
+            zk "$name" $args
+            rc=$?
+            # Anything but new/edit prints to the terminal; keep it readable.
+            [ "${cmd#zk edit}" = "$cmd" ] && pause
+            (exit "$rc")
+        fi
         ;;
     /*)
         query=$(trim "${input#/}")
