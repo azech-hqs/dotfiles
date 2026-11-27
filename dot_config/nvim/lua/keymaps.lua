@@ -62,29 +62,45 @@ vim.keymap.set(
     { desc = "Search backward within visual selection" }
 )
 
--- Toggle checkboxes in markdown
+-- Toggle checkboxes in markdown: `[ ]` todo, `[/]` ongoing, `[x]` done
 -- TODO: find better implementation for filetype-specific keymap
-_G.toggle_checkbox = function(mode)
+local checkbox_pattern = "^(%s*[%-%*] %[)([x/%s]+)(%])"
+
+---Set the state of every checkbox in a line range. The new state is derived from the first
+---checkbox found, so a mixed range ends up uniform.
+---@param mode string "visual" for the last visual selection, otherwise the last operator motion
+---@param next_state fun(current: string): string
+local function set_checkboxes(mode, next_state)
     if vim.bo.filetype ~= "markdown" then
         print("not markdown")
         return
     end
-    local mark1 = mode == "visual" and "<" or "["
-    local mark2 = mode == "visual" and ">" or "]"
-    local startpos = vim.api.nvim_buf_get_mark(0, mark1)
-    local endpos = vim.api.nvim_buf_get_mark(0, mark2)
-    local lines = vim.fn.getline(startpos[1], endpos[1])
+    local first = vim.api.nvim_buf_get_mark(0, mode == "visual" and "<" or "[")[1]
+    local last = vim.api.nvim_buf_get_mark(0, mode == "visual" and ">" or "]")[1]
 
     local filler = nil
-    for index, line in ipairs(lines) do ---@diagnostic disable-line:param-type-mismatch
-        local is_toggleable = line:match("^%s*[%-%*] %[([x%s]+)%]")
-
-        if is_toggleable then
-            filler = filler or is_toggleable == "x" and " " or "x"
-            local toggled_line = line:gsub("^(%s*[%-%*] %[)[x%s]+(%])", "%1" .. filler .. "%2")
-            vim.fn.setline(startpos[1] + index - 1, toggled_line)
+    for lnum = first, last do
+        local line = vim.fn.getline(lnum)
+        local _, state = line:match(checkbox_pattern)
+        if state then
+            filler = filler or next_state(state)
+            vim.fn.setline(lnum, (line:gsub(checkbox_pattern, "%1" .. filler .. "%3")))
         end
     end
+end
+
+-- `[x]` <-> `[ ]` (an ongoing `[/]` becomes done)
+_G.toggle_checkbox = function(mode)
+    set_checkboxes(mode, function(state)
+        return state == "x" and " " or "x"
+    end)
+end
+
+-- `[/]` <-> `[ ]` (a done `[x]` becomes ongoing)
+_G.toggle_checkbox_ongoing = function(mode)
+    set_checkboxes(mode, function(state)
+        return state == "/" and " " or "/"
+    end)
 end
 vim.keymap.set(
     "n",
@@ -103,6 +119,22 @@ vim.keymap.set(
     "<leader>xx",
     "<leader>x_",
     { desc = "Toggle checkbox (current line)", remap = true }
+)
+vim.keymap.set(
+    "n",
+    "<leader>xh",
+    ":set opfunc=v:lua.toggle_checkbox_ongoing<CR>g@_",
+    { silent = true, desc = "Toggle checkbox ongoing/[h]alf (current line)" }
+)
+
+-- Substitute the word under the cursor in the whole buffer (rename without LSP).
+-- Prefills the replacement with the current word; `\<\>` matches whole words only and
+-- `I` makes the match case-sensitive regardless of 'ignorecase'.
+vim.keymap.set(
+    "n",
+    "<leader>rw",
+    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    { desc = "[R]ename [w]ord under cursor (substitute)" }
 )
 
 -- Undotree toggle
